@@ -45,44 +45,47 @@
         
             calc.addEventListener('submit', function(event) {
                 event.preventDefault();
-        
-                const value1 = parseInt(first_num.value);
-                const value2 = parseInt(second_num.value);
+
+                const value1 = first_num.value.trim();
+                const value2 = second_num.value.trim();
                 const operate = operator.value;
-                let result;
-        
-                if(isNaN(value1) || isNaN(value2) || value1 < 0 || value2 < 0) {
+
+                if (!/^\d+(\.\d+)?$/.test(value1) || !/^\d+(\.\d+)?$/.test(value2)) {
                     alert('Error :(');
                     console.log('Error :(');
                     return;
                 }
+
+                const num1 = parseFloat(value1);
+                const num2 = parseFloat(value2);
+                let result;
         
-                switch(operate) {
+                switch (operate) {
                     case '+':
-                        result = value1 + value2;
+                        result = num1 + num2;
                         break;
                     case '-':
-                        result = value1 - value2;
+                        result = num1 - num2;
                         break;
                     case '*':
-                        result = value1 * value2;
+                        result = num1 * num2;
                         break;
                     case '/':
-                        if(value2 == 0) {
+                        if (num2 === 0) {
                             alert("It's over 9000!");
                             console.log("It's over 9000!");
                             return;
                         } else {
-                            result = value1 / value2;
+                            result = num1 / num2;
                         }
                         break;
                     case '%':
-                        if(value2 == 0) {
+                        if (num2 === 0) {
                             alert("It's over 9000!");
                             console.log("It's over 9000!");
                             return;
                         } else {
-                            result = value1 % value2;
+                            result = num1 % num2;
                         }
                         break;      
                 }
