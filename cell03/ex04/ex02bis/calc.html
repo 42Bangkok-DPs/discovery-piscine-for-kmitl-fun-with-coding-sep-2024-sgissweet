@@ -46,6 +46,12 @@
                 const value2 = $('#second_num').val().trim();
                 const operate = $('#operator').val();
 
+                if(value1.includes('.') || value2.includes('.')) {
+                    alert('Error :(');
+                    console.log('Error :(');
+                    return;
+                }
+
                 if (!/^\d+(\.\d+)?$/.test(value1) || !/^\d+(\.\d+)?$/.test(value2)) {
                     alert('Error :(');
                     console.log('Error :(');
